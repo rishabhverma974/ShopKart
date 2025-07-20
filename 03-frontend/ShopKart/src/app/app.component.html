@@ -7,24 +7,9 @@
 					<img src="assets\images\ShopKart_Logo-01.png" alt="ShopKart" class="img-responsive">
 				</a>
 			</div>
-			<div class="menu-sidebar-content js-scrollbar1">
-				<nav class="navbar-sidebar">
-					<ul class="list-unstyled navbar-list">
-						<li>
-							<a href="#">Books</a>
-						</li>
-						<li>
-							<a href="#">Coffee Mugs</a>
-						</li>
-						<li>
-							<a href="#">Mouse Pads</a>
-						</li>
-						<li>
-							<a href="#">Luggage Tags</a>
-						</li>
-					</ul>
-				</nav>
-			</div>
+
+	<app-prodcut-category-menu></app-prodcut-category-menu>
+			
 		</aside>
 		<!-- END MENU SIDEBAR-->
 
@@ -55,7 +40,8 @@
 			</header>
 			<!-- END HEADER DESKTOP-->
 <!-- MAIN CONTENT-->
- <app-product-list></app-product-list>
+
+<router-outlet></router-outlet>
 
   <!-- END MAIN CONTENT-->
    </div>
