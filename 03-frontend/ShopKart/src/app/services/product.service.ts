@@ -9,6 +9,7 @@ import { ProductCategory } from '../common/product-category';
   providedIn: 'root'
 })
 export class ProductService {
+  
 
   private baseUrl = 'http://localhost:8080/shpKart/products';
 
@@ -22,10 +23,20 @@ export class ProductService {
     // building URL based on categoryID
     const searchUrl = `${this.baseUrl}/search/findByCategoryId?id=${theCategoryId}`;
 
+    return this.getProducts(searchUrl);
+   }
+
+    serachProducts(theKeyWord: string): Observable<Product[]> {
+      const searchUrl = `${this.baseUrl}/search/findByNameContaining?name=${theKeyWord}`;
+
+    return this.getProducts(searchUrl);
+  }
+
+  private getProducts(searchUrl: string): Observable<Product[]> {
     return this.httpClient.get<GetResponseProducts>(searchUrl).pipe(
       map(response => response._embedded.products)
     );
-   }
+  }
 
    getProductCategories(): Observable<ProductCategory[]> {
 
@@ -34,6 +45,12 @@ export class ProductService {
     );
 
   }
+
+  getProduct(theProductId: number): Observable<Product>{
+    const productUrl = `${this.baseUrl}/${theProductId}`;
+    return this.httpClient.get<Product>(productUrl);
+  }
+
   }
 
   
