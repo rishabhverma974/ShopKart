@@ -15,4 +15,7 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
     //URL Spring will automatically give endpoints...
     //.../products/search/findByCategoryId?id=2
     Page<Product> findByCategoryId(@Param("id") Long id, Pageable pageable);
+
+    //Select * From Product p where p.name Like CONCAT('%', :name, '%')
+    Page<Product> findByNameContaining(@Param("name") String name, Pageable pageable);
 }
